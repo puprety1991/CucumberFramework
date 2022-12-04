@@ -1,33 +1,31 @@
-package CucumberTool;
+package steps;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import utils.CommonMethods;
+import utils.ConfigReader;
 
-import java.util.concurrent.TimeUnit;
-
-public class StepDefClass {
-    public static WebDriver driver;
+public class LoginSteps extends CommonMethods {
+    //public static WebDriver driver;
     @Given("user is navigated to HRMS application")
     public void user_is_navigated_to_hrms_application() {
-        WebDriverManager.chromedriver().setup();
+       /* WebDriverManager.chromedriver().setup();
         driver=new ChromeDriver();
         driver.get("http://hrm.syntaxtechs.net/humanresources/symfony/web/index.php/auth/login");
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
+        driver.manage().window().maximize();*/
+        openBrowserAndLaunchApplication();
     }
 
     @When("user enters valid username and valid password")
     public void user_enters_valid_username_and_valid_password() {
         WebElement usernameField = driver.findElement(By.id("txtUsername"));
-        usernameField.sendKeys("admin");
+        usernameField.sendKeys(ConfigReader.getPropertyValue("username"));
         WebElement password = driver.findElement(By.xpath("//input[@id = 'txtPassword']"));
-        password.sendKeys("Hum@nhrm123");
+        password.sendKeys(ConfigReader.getPropertyValue("password"));
     }
 
     @When("user clicks on login button")
@@ -45,4 +43,5 @@ public class StepDefClass {
             System.out.println("Test case is Failed.");
         }
     }
+
 }
