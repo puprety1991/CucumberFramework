@@ -30,8 +30,8 @@ public class LoginSteps extends CommonMethods {
 
     @When("user clicks on login button")
     public void user_clicks_on_login_button() {
-        WebElement logIn = driver.findElement(By.xpath("//input[@name = 'Submit']"));
-        logIn.click();
+        WebElement logInButton = driver.findElement(By.xpath("//input[@name = 'Submit']"));
+        click(logInButton);
     }
 
     @Then("user is successfully logged in")
