@@ -2,6 +2,7 @@ package utils;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -28,7 +29,13 @@ public class CommonMethods {
         driver.get(ConfigReader.getPropertyValue("url"));
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
-    public static void tearDown(){
+    public static void closeBrowser(){
         driver.quit();
     }
+    // we use this method instead of send keys method throughout the framework
+    public static void sendText(WebElement element,String textToSend){
+        element.clear();
+        element.sendKeys(textToSend);
+    }
+
 }
