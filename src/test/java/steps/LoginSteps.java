@@ -10,7 +10,6 @@ import utils.CommonMethods;
 import utils.ConfigReader;
 
 public class LoginSteps extends CommonMethods {
-    //public static WebDriver driver;
     @Given("user is navigated to HRMS application")
     public void user_is_navigated_to_hrms_application() {
         openBrowserAndLaunchApplication();
@@ -29,8 +28,8 @@ public class LoginSteps extends CommonMethods {
 
     @Then("user is successfully logged in")
     public void user_is_successfully_logged_in() {
-        WebElement welcomeMessage = driver.findElement(By.id("welcome"));
-        if (welcomeMessage.isDisplayed()) {
+      //  WebElement welcomeMessage = driver.findElement(By.id("welcome"));
+        if (dashboard.welcomeMessage.isDisplayed()) {
             System.out.println("Test case is passed");
         } else {
             System.out.println("Test is failed");
