@@ -5,33 +5,36 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.AddEmployeePage;
 import utils.CommonMethods;
 
 public class AddEmployeeSteps extends CommonMethods {
 
     @When("user clicks on PIM option")
     public void user_clicks_on_pim_option() {
-        WebElement pimOption = driver.findElement(By.id("menu_pim_viewPimModule"));
-        pimOption.click();
+        AddEmployeePage addEmployee = new AddEmployeePage();
+        click(dashboard.pimOption);
     }
 
     @When("user clicks on Add Employee button")
     public void user_clicks_on_add_employee_button() {
-        WebElement addEmployeeOption = driver.findElement(By.id("menu_pim_addEmployee"));
-        addEmployeeOption.click();
+        click(dashboard.addEmployeeOption);
 
     }
     @When("user enter firstname and lastname")
     public void user_enter_firstname_and_lastname() {
-        WebElement firstName = driver.findElement(By.name("firstName"));
+        /*WebElement firstName = driver.findElement(By.name("firstName"));
         firstName.sendKeys("Salman");
         WebElement lastName = driver.findElement(By.name("lastName"));
-        lastName.sendKeys("Khan");
+        lastName.sendKeys("Khan");*/
+        sendText(addEmployee.firstNameField, "Oscar");
+        sendText(addEmployee.lastNameField, "Patel");
     }
     @When("user clicks on save button")
     public void user_clicks_on_save_button() {
-        WebElement saveButton = driver.findElement(By.id("btnSave"));
-        saveButton.click();
+        /*WebElement saveButton = driver.findElement(By.id("btnSave"));
+        saveButton.click();*/
+        click(addEmployee.saveButton);
 
     }
     @Then("employee added successfully")
