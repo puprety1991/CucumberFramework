@@ -15,8 +15,24 @@ public class AddEmployeePage extends CommonMethods {
     @FindBy(id = "middleName")
     public WebElement middleNameField;
 
+    @FindBy(id = "photofile")
+    public WebElement photograph;
+
+    @FindBy(id = "chkLogin")
+    public WebElement checkBox;
+
+    @FindBy(id = "user_name")
+    public WebElement createUserNameField;
+
+    @FindBy(id = "user_password")
+    public WebElement createPasswordField;
+
+    @FindBy(id = "re_password")
+    public WebElement confirmPasswordField;
     @FindBy(id = "btnSave")
     public WebElement saveButton;
+
+
 
     public AddEmployeePage(){
         //page factory is the concept of selenium which we use to implement page

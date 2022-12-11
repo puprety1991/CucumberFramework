@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
         // it will quickly scan all the gherkin steps whether they are implemented or not
         dryRun = false,
         //when we set dry run to false, it starts execution again
-        tags = "@datatable",//if we want to run two then "@sprint3 or @sprint2"
+        tags = "@excel",//if we want to run two then "@sprint3 or @sprint2"
 
         //to remove irrelevant information from console, you need to set monochrome to true
         monochrome = true,

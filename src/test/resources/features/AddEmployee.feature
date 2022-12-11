@@ -38,6 +38,11 @@ Feature: Add Employee
           |Argentina|MS        |Winner  |
           |Sachin   |MS        |Tendulkar|
 
+        @excel
+        Scenario: Adding multiple employees using excel file
+          When user add multiple employees from excel using "EmployeeData" and verify it
+
+
 
 
 
