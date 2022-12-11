@@ -30,5 +30,14 @@ Feature: Add Employee
           |Joe        |Biden     |
           |Kamala     |Harish    |
 
+        @datatable
+        Scenario: Adding multiple employee using data table
+          When user adds multiple employees and verify they are added successfully
+          |firstName|middleName|lastName|
+          |Leo      |MS        |Messi   |
+          |Argentina|MS        |Winner  |
+          |Sachin   |MS        |Tendulkar|
+
+
 
 
