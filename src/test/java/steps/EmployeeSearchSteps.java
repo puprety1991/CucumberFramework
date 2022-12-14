@@ -14,7 +14,7 @@ public class EmployeeSearchSteps extends CommonMethods {
     }
     @When("user enter valid employee id")
     public void user_enter_valid_employee_id() {
-        sendText(empList.empIdField, ConfigReader.getPropertyValue("empId"));
+        sendText(empList.empIdTextField, ConfigReader.getPropertyValue("empId"));
     }
     @When("user clicks on search button")
     public void user_clicks_on_search_button() {

@@ -3,6 +3,7 @@ package steps;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -92,6 +93,7 @@ public class AddEmployeeSteps extends CommonMethods {
             sendText(addEmployee.firstNameField,mapNewEmp.get("firstName"));
             sendText(addEmployee.middleNameField,mapNewEmp.get("middleName"));
             sendText(addEmployee.lastNameField,mapNewEmp.get("lastName"));
+            String empIdValue = addEmployee.empIdLocator.getAttribute("value");
             sendText(addEmployee.photograph, mapNewEmp.get("photograph"));
             if(!addEmployee.checkBox.isSelected()){
                 addEmployee.checkBox.click();
@@ -100,10 +102,34 @@ public class AddEmployeeSteps extends CommonMethods {
             sendText(addEmployee.createPasswordField, mapNewEmp.get("password"));
             sendText(addEmployee.confirmPasswordField, mapNewEmp.get("confirmPassword"));
 
+
+
+
             click(addEmployee.saveButton);
 
             //verification is in homework
+            Thread.sleep(3000);
+            click(dashboard.empListOption);
             Thread.sleep(2000);
+            sendText(empList.empIdTextField, empIdValue);
+            click(empList.searchButton);
+
+            //verifying the employee added from the Excel file
+            List<WebElement> rowData =
+                    driver.findElements(By.xpath("//*[@id='resultTable']/tbody/tr"));
+          /*  for(WebElement data:rowData){
+                String rowText = data.getText();
+                System.out.println(rowText);
+            }*/
+            for (int i =0; i<rowData.size(); i++){
+                System.out.println("I am inside the loop and worried about josh");
+                //getting the text of every element from here and storing it into string
+                String rowText = rowData.get(i).getText();
+                System.out.println(rowText);
+
+                String expectedData = empIdValue + " " + mapNewEmp.get("firstName")
+                        + " " + mapNewEmp.get("middleName") + " " + mapNewEmp.get("lastName");
+            }
 
             click(dashboard.addEmployeeOption);
             Thread.sleep(2000);

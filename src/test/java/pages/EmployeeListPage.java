@@ -7,10 +7,12 @@ import utils.CommonMethods;
 
 public class EmployeeListPage extends CommonMethods {
     @FindBy(id = "empsearch_id")
-    public WebElement empIdField;
+    public WebElement empIdTextField;
 
     @FindBy(id = "empsearch_employee_name_empName")
     public WebElement searchNameField;
+
+
 
     @FindBy(id = "searchBtn")
     public WebElement searchButton;
