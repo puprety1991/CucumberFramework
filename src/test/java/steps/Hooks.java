@@ -23,7 +23,7 @@ public class Hooks extends CommonMethods {
             pic = takeScreenShot("failed/"+scenario.getName());
         }else{
             //pass screenshot will be available inside passed folder
-            pic = takeScreenShot("passed"+scenario.getName());
+            pic = takeScreenShot("passed/"+scenario.getName());
         }
         //to attach the screenshot in our report
         scenario.attach(pic,"image/png",scenario.getName());
