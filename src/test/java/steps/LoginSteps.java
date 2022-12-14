@@ -11,10 +11,6 @@ import utils.CommonMethods;
 import utils.ConfigReader;
 
 public class LoginSteps extends CommonMethods {
-    @Given("user is navigated to HRMS application")
-    public void user_is_navigated_to_hrms_application() {
-        openBrowserAndLaunchApplication();
-    }
 
     @When("user enters valid username and valid password")
     public void user_enters_valid_username_and_valid_password() {
