@@ -2,7 +2,7 @@ package steps;
 
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import io.cucumber.java.en.When;;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -11,12 +11,14 @@ import pages.AddEmployeePage;
 import utils.CommonMethods;
 import utils.Constants;
 import utils.ExcelReader;
+import utils.databaseReader;
 
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 public class AddEmployeeSteps extends CommonMethods {
+    String id, fName,lName;
 
     @When("user clicks on PIM option")
     public void user_clicks_on_pim_option() {
@@ -51,6 +53,8 @@ public class AddEmployeeSteps extends CommonMethods {
     }
     @When("user enter {string} and {string}")
     public void user_enter_and(String firstName, String lastName) {
+        fName=firstName;
+        lName=lastName;
         sendText(addEmployee.firstNameField, firstName);
         sendText(addEmployee.lastNameField, lastName);
     }
@@ -101,10 +105,6 @@ public class AddEmployeeSteps extends CommonMethods {
             sendText(addEmployee.createUserNameField,mapNewEmp.get("username"));
             sendText(addEmployee.createPasswordField, mapNewEmp.get("password"));
             sendText(addEmployee.confirmPasswordField, mapNewEmp.get("confirmPassword"));
-
-
-
-
             click(addEmployee.saveButton);
 
             //verification is in homework
@@ -135,6 +135,24 @@ public class AddEmployeeSteps extends CommonMethods {
             Thread.sleep(2000);
 
         }
+
+    }
+    @When("user captures employee id")
+    public void user_captures_employee_id() {
+        id = addEmployee.employeeIdAdd.getAttribute("value");
+
+    }
+
+    @Then("added employee is displayed in database")
+    public void added_employee_is_displayed_in_database() {
+        String query = DatabaseSteps.getFnameLnameQuery() + id;
+        System.out.println(query);
+        List<Map<String, String>> dataFromDatabase = databaseReader.getListOfMapsFromResultSet(query);
+        System.out.println(dataFromDatabase);
+        String firstNameFromDb = dataFromDatabase.get(0).get("emp_firstname");
+        String lastNameFromDb = dataFromDatabase.get(0).get("emp_lastname");
+        Assert.assertEquals(fName,firstNameFromDb);
+        Assert.assertEquals(lName,lastNameFromDb);
 
     }
 }

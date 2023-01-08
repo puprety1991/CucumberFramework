@@ -100,6 +100,10 @@ public class CommonMethods extends PageInitializer {
         SimpleDateFormat sdf = new SimpleDateFormat(pattern);
         return sdf.format(date);
     }
+    public static void getAttribute(WebElement element,String key){
+        element.getAttribute(key);
+
+    }
 
 
 }

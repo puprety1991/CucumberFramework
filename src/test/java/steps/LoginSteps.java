@@ -20,13 +20,11 @@ public class LoginSteps extends CommonMethods {
 
     @When("user clicks on login button")
     public void user_clicks_on_login_button() {
-        System.out.println(10/0);
         click(login.loginButton);
     }
 
     @Then("user is successfully logged in")
     public void user_is_successfully_logged_in() {
-        System.out.println(10/0);
       //  WebElement welcomeMessage = driver.findElement(By.id("welcome"));
         if (dashboard.welcomeMessage.isDisplayed()) {
             System.out.println("Test case is passed");
@@ -39,7 +37,6 @@ public class LoginSteps extends CommonMethods {
     public void user_enters_ess_username_and_ess_password() {
         sendText(login.usernameTextField, "asmahuma321");
         sendText(login.passwordTextField, "Hum@nhrm123");
-        System.out.println(10/0);
     }
 
     @When("user enters invalid username and password")
