@@ -104,6 +104,18 @@ public class CommonMethods extends PageInitializer {
         element.getAttribute(key);
 
     }
+    public static String insideSingleQuotation(String stringToBeInserted){
+        int index =1;
+        String singleQuotation = "' '";
+        String newString = new String();
+        for(int i=0; i<singleQuotation.length(); i++){
+            newString+=singleQuotation.charAt(i);
+            if(i == index){
+                newString+=stringToBeInserted;
+            }
+        }
+        return newString;
+    }
 
 
 }
