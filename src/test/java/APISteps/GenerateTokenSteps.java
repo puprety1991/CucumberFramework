@@ -21,6 +21,6 @@ public class GenerateTokenSteps {
         //printing the response body
         //response.prettyPrint();
        token = "Bearer "+response.jsonPath().getString("token");
-       System.out.println(token);
+      // System.out.println(token);
     }
 }

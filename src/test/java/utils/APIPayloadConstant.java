@@ -1,5 +1,6 @@
 package utils;
 
+import APISteps.APIWorkFlowSteps;
 import org.json.JSONObject;
 
 public class APIPayloadConstant {
@@ -10,6 +11,7 @@ public class APIPayloadConstant {
                 "}";
         return adminPayload;
     }
+    // we simplified our data to create employee
     public static String createEmployeeJsonBody(){
         JSONObject object = new JSONObject();
         object.put("emp_firstname","Henry");
@@ -33,5 +35,38 @@ public class APIPayloadConstant {
                 "  \"emp_job_title\": \"Politician\"\n" +
                 "}";
         return createEmployeePayload;
+    }
+    public static String createEmployeePayloadDynamic( String firstName, String lastName, String middleName,
+                                                      String gender, String dob, String empStatus, String jobTitle){
+        JSONObject object = new JSONObject();
+        object.put("emp_firstname",firstName);
+        object.put("emp_lastname",lastName);
+        object.put("emp_middle_name",middleName);
+        object.put("emp_gender",gender);
+        object.put("emp_birthday",dob);
+        object.put("emp_status",empStatus);
+        object.put("emp_job_title",jobTitle);
+        return object.toString();
+
+    }
+    public static String updateEmployeePayLoadDynamic(String employeeId,String firstName, String lastName, String middleName,
+                                                      String gender, String dob, String empStatus, String jobTitle){
+        JSONObject object = new JSONObject();
+        object.put("employee_id", employeeId);
+        object.put("emp_firstname",firstName);
+        object.put("emp_lastname",lastName);
+        object.put("emp_middle_name",middleName);
+        object.put("emp_gender",gender);
+        object.put("emp_birthday",dob);
+        object.put("emp_status",empStatus);
+        object.put("emp_job_title",jobTitle);
+        return object.toString();
+    }
+
+    public static String partialUpdateEmployeePayloadDynamic(String employeeId,String firstName){
+        JSONObject object = new JSONObject();
+        object.put("employee_id", employeeId);
+        object.put("emp_firstname",firstName);
+        return object.toString();
     }
 }
